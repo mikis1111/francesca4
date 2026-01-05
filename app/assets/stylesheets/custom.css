@@ -1,0 +1,162 @@
+/* --- CARD VERSIONE PRO --- */
+
+.card-pro {
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    transition: all 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    transform-style: preserve-3d;
+    background: white;
+    border: 2px solid transparent;
+  }
+  
+  /* Glow pulsante */
+  .card-pro::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(circle at 50% 120%, rgba(75,0,130,0.25), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.45s ease;
+  }
+  
+  /* Effetto hover principale */
+  .card-pro:hover {
+    transform: translateY(-55px) scale(1.22) rotateX(14deg) rotateY(-14deg);
+    box-shadow:
+      0 55px 85px rgba(0, 0, 0, 0.45),
+      0 0 65px rgba(75, 0, 130, 0.85),
+      0 0 95px rgba(138, 43, 226, 0.45);
+    border-color: #4B0082;
+    filter: brightness(1.18);
+  }
+  
+  
+  .card-pro:hover::before {
+    opacity: 1;
+  }
+  
+  /* Effetto zoom immagine */
+  .card-pro img {
+    transition: transform 0.6s ease, opacity 0.6s ease;
+  }
+  
+  .card-pro:hover img {
+    transform: scale(1.12);
+    opacity: 0.9;
+  }
+  
+  /* Testo */
+  .card-pro .card-title {
+    transition: color 0.45s ease;
+  }
+  
+  .card-pro:hover .card-title {
+    color: #4B0082;
+  }
+  
+  /* Pulsante */
+  .card-pro .btn {
+    transition: all 0.45s ease;
+  }
+  
+  .card-pro:hover .btn {
+    background-color: #4B0082;
+    color: white;
+    transform: scale(1.08);
+  }
+  
+  /* --- Ripple effect al click --- */
+  .card-pro:active {
+    transform: scale(0.97);
+  }
+  
+  .card-pro:active::after {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: rgba(75, 0, 130, 0.35);
+    border-radius: 50%;
+    top: var(--y);
+    left: var(--x);
+    transform: translate(-50%, -50%) scale(1);
+    animation: ripple 0.6s ease-out forwards;
+  }
+  
+  @keyframes ripple {
+    from { transform: translate(-50%, -50%) scale(0); opacity: 0.9; }
+    to   { transform: translate(-50%, -50%) scale(12); opacity: 0; }
+  }
+  .card-god {
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.35s ease,
+                filter 0.35s ease,
+                border-color 0.35s ease;
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+  
+  .card-god {
+    transition: transform 0.35s ease, box-shadow 0.35s ease, filter 0.35s ease;
+    will-change: transform;
+  }
+  
+  .card-god:hover {
+    transform: translateY(-25px) scale(1.07);   /* sollevamento leggero ed elegante */
+  
+    box-shadow:
+      0 18px 35px rgba(0, 0, 0, 0.18),         /* ombra morbida */
+      0 8px 18px rgba(75, 0, 130, 0.15);       /* leggero accento viola */
+  
+    filter: brightness(1.08);
+    border-radius: 14px;                       /* dà un feeling più premium */
+  }
+  
+  .footer-link {
+    color: #ffffffd4;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  
+  .footer-link:hover {
+    color: #ffffff;
+  }
+  
+  .footer-social {
+    color: white;
+    font-size: 1.5rem;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+  
+  .footer-social:hover {
+    transform: scale(1.2);
+    color: #e0e0e0;
+  }
+  
+  /* Distanza orizzontale tra le card */
+  .card-spacing {
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+  }
+  
+  /* Per evitare overflow della row */
+  .row {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+  
+  
+  /* 🎮 GOD MODE HOVER – con sollevamento senza rotazione */
+  .card-god {
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.35s ease;
+    transform-origin: center;
+  }
+  
+  .card-god:hover {
+    transform: translateY(-22px) scale(1.12);   /* più alto e più grande */
+    box-shadow: 0 25px 35px rgba(0, 0, 0, 0.35); /* ombra molto potente */
+  }
+  

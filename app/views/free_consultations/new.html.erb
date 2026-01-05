@@ -1,0 +1,180 @@
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-7 col-lg-6">
+
+      <div class="card shadow-lg p-4 p-md-5">
+
+        <h3 class="fw-bold text-center mb-2">
+          Consulenza gratuita online
+        </h3>
+
+        <p class="text-center text-muted mb-4">
+          Durata 30 minuti · Online · Nessun impegno
+        </p>
+
+        <div class="alert alert-light border mb-4">
+          <ul class="mb-0 small">
+            <li>📅 Scegli uno slot disponibile</li>
+            <li>📧 Riceverai un’email di conferma</li>
+            <li>💬 Il link per il collegamento arriverà prima dell’incontro</li>
+          </ul>
+        </div>
+
+        <%= form_with model: @free_consultation_booking,
+              url: prenota_consulenza_path,
+              data: { turbo: false } do |f| %>
+
+          <!-- SELECT SLOT -->
+          <div class="mb-4">
+            <%= f.label :scheduled_at,
+                  "Scegli data e ora",
+                  class: "form-label fw-semibold" %>
+
+            <%= f.select :scheduled_at,
+                  @grouped_slots,
+                  { prompt: "Seleziona uno slot disponibile" },
+                  class: "form-select form-select-lg",
+                  required: true,
+                  id: "slot-select" %>
+          </div>
+
+          <!-- RIEPILOGO -->
+          <div id="booking-summary"
+               class="booking-summary-card alert alert-light border d-none">
+            <h6 class="fw-bold mb-3">Riepilogo prenotazione</h6>
+
+            <div class="summary-row">
+              <span class="summary-icon">📅</span>
+              <div>
+                <div class="summary-label">Data</div>
+                <div class="summary-value" id="summary-date">-</div>
+              </div>
+            </div>
+
+            <div class="summary-row">
+              <span class="summary-icon">⏰</span>
+              <div>
+                <div class="summary-label">Ora</div>
+                <div class="summary-value" id="summary-time">-</div>
+              </div>
+            </div>
+
+            <p class="small text-muted mt-3 mb-0">
+              Controlla i dati prima di confermare.
+            </p>
+          </div>
+
+          <!-- SUBMIT -->
+          <div class="d-grid mt-4">
+            <%= f.submit "Conferma prenotazione",
+                  class: "btn-cta btn-lg",
+                  id: "submit-booking",
+                  disabled: true,
+                  data: { disable_with: "Prenotazione in corso..." } %>
+          </div>
+
+        <% end %>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("turbo:load", () => {
+    const select = document.getElementById("slot-select");
+    const summary = document.getElementById("booking-summary");
+    const dateSpan = document.getElementById("summary-date");
+    const timeSpan = document.getElementById("summary-time");
+    const submitBtn = document.getElementById("submit-booking");
+
+    if (!select) {
+      console.warn("slot-select non trovato");
+      return;
+    }
+
+    // Stato iniziale
+    summary.classList.add("d-none");
+    submitBtn.disabled = true;
+
+    select.addEventListener("change", () => {
+      const value = select.value;
+
+      if (!value) {
+        summary.classList.add("d-none");
+        submitBtn.disabled = true;
+        dateSpan.textContent = "-";
+        timeSpan.textContent = "-";
+        return;
+      }
+
+      // value es: 2025-12-26T18:00:00+01:00
+      const date = new Date(value);
+
+      if (isNaN(date.getTime())) {
+        console.error("Data non valida:", value);
+        summary.classList.add("d-none");
+        submitBtn.disabled = true;
+        return;
+      }
+
+      dateSpan.textContent = date.toLocaleDateString("it-IT", {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+      });
+
+      timeSpan.textContent = date.toLocaleTimeString("it-IT", {
+        hour: "2-digit",
+        minute: "2-digit"
+      });
+
+      // MOSTRA RIEPILOGO
+      summary.classList.remove("d-none");
+      submitBtn.disabled = false;
+    });
+  });
+</script>
+
+
+
+<style>
+/* ===== RIEPILOGO ANIMATO ===== */
+.booking-summary-card {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  border-radius: 16px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.booking-summary-card:not(.d-none) {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* layout interno */
+.summary-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+.summary-icon {
+  font-size: 1.4rem;
+}
+
+.summary-label {
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+.summary-value {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+</style>

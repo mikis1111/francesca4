@@ -1,0 +1,225 @@
+<!-- BACKGROUND HERO PREMIUM -->
+<div class="hero" style="
+  background-image: url('/assets/hero_salad.jpg');
+  background-size: cover;
+  background-position: center;
+  padding-top: 40px;
+  padding-bottom: 140px;
+  position: relative;
+">
+
+  <!-- SFUMATURA -->
+  <div style="
+    position:absolute;
+    inset:0;
+    backdrop-filter: blur(2px);
+  "></div>
+
+  <div class="container d-flex justify-content-center position-relative" style="z-index:2;">
+    <div class="premium-card animate-premium">
+
+      <!-- ROW LATERALE -->
+      <div class="row align-items-center">
+
+        <!-- FOTO A SINISTRA -->
+        <div class="col-12 col-md-4 text-center mb-4 mb-md-0">
+          <img src="/assets/dottoressa.jpg"
+               class="profile-left-photo">
+        </div>
+
+        <!-- TESTO A DESTRA -->
+        <div class="col-12 col-md-8">
+
+          <h2 class="premium-title-left mb-3">Chi sono</h2>
+
+          <p>
+            Mi chiamo Francesca Vitale, sono una nutrizionista con esperienza nel supporto alimentare
+            personalizzato per ogni tipo di esigenza. Il mio obiettivo è accompagnarti con equilibrio,
+            semplicità ed empatia verso uno stile di vita più sano.
+          </p>
+
+          <p>
+            Il mio approccio unisce ascolto attento, indicazioni pratiche e flessibili e un metodo scientificamente
+            valido, ma semplice e accessibile. Ogni percorso è costruito su misura per garantire risultati concreti
+            e sostenibili.
+          </p>
+
+        </div>
+      </div>
+
+      <!-- DIVIDER -->
+      <div class="premium-divider my-4"></div>
+
+      <!-- LISTA -->
+      <div class="card shadow-sm border-0" style="border-radius:18px;">
+        <div class="card-header text-center fw-bold" style="background:white; border-radius:18px 18px 0 0;">
+          Le mie consulenze ti aiutano a:
+        </div>
+
+        <ul class="list-group list-group-flush">
+          <% items = [
+            "Migliorare le abitudini alimentari",
+            "Raggiungere un benessere duraturo",
+            "Gestire il peso in modo naturale",
+            "Mangiare con maggiore consapevolezza"
+          ] %>
+
+          <% items.each do |item| %>
+            <li class="list-group-item premium-list">
+              <span class="premium-check">✔</span> <%= item %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <!-- BOTTONI -->
+      <div class="text-center mt-4">
+        <a href="#" class="btn btn-premium px-4 py-2">
+          PRENOTA UNA CONSULENZA GRATUITA
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- STILI PREMIUM -->
+<style>
+
+  /* CARD PREMIUM OTTIMIZZATA */
+  .premium-card {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(12px);
+    padding: 40px 45px 55px;
+    border-radius: 26px;
+    max-width: 900px;
+    width: 100%;
+    margin-top: -40px !important;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.18);
+  }
+
+  /* FOTO LATERALE PREMIUM */
+  .profile-left-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid white;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  }
+
+  /* TITOLO A SINISTRA */
+  .premium-title-left {
+    font-weight: 700;
+    color: #0B6B43;
+    font-size: 2.3rem;
+    position: relative;
+  }
+
+  .premium-title-left::after {
+    content: "";
+    display: block;
+    margin-top: 10px;
+    width: 70px;
+    height: 4px;
+    background: linear-gradient(90deg, #0B6B43, #4B0082);
+    border-radius: 10px;
+  }
+
+  /* DIVIDER */
+  .premium-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #4B0082, transparent);
+    opacity: 0.4;
+  }
+
+  /* LISTA */
+  .premium-list {
+    font-size: 1.05rem;
+    padding: 14px;
+  }
+
+  .premium-check {
+    color: #0B6B43;
+    font-size: 1.3rem;
+    margin-right: 10px;
+  }
+
+  /* PULSANTI */
+  .btn-premium {
+    background: linear-gradient(135deg, #4B0082, #7A1FA2);
+    color: white;
+    border-radius: 30px;
+    font-weight: 600;
+    box-shadow: 0 5px 15px rgba(75,0,130,0.3);
+    transition: 0.2s ease-in-out;
+  }
+
+  .btn-premium:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(75,0,130,0.45);
+  }
+
+  /* ANIMAZIONE */
+  .animate-premium {
+    animation: fadeInUp 0.8s ease both;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity:0; transform: translateY(25px); }
+    to   { opacity:1; transform: translateY(0); }
+  }
+
+
+  /* 📱📱 RESPONSIVE PER IPHONE SE (max 576px) */
+  @media (max-width: 576px) {
+
+    .hero {
+      padding-top: 10px !important;
+      padding-bottom: 90px !important;
+    }
+
+    .premium-card {
+      padding: 25px 20px 35px !important;
+      border-radius: 22px !important;
+      margin-top: -30px !important;
+    }
+
+    .profile-left-photo {
+      width: 130px !important;
+      height: 130px !important;
+      border-width: 3px !important;
+    }
+
+    .premium-title-left {
+      font-size: 1.7rem !important;
+      text-align: center;
+    }
+
+    .premium-title-left::after {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .premium-card p {
+      font-size: 0.95rem !important;
+      line-height: 1.35rem !important;
+      text-align: center;
+    }
+
+    .list-group-item {
+      font-size: 0.9rem !important;
+      padding: 10px !important;
+    }
+
+    .btn-premium {
+      width: 100%;
+      padding: 10px !important;
+      font-size: 1rem !important;
+    }
+
+  }
+
+</style>

@@ -1,0 +1,112 @@
+<style>
+  .sport-hero {
+    position: relative;
+    min-height: 100vh;
+    background-image: url("<%= asset_path 'hero_salad5.jpg' %>");
+    background-size: cover;
+    background-position: center;
+    padding: 80px 60px;
+    display: flex;
+    align-items: center;
+  }
+
+  .sport-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(3px);
+    z-index: 1;
+  }
+
+  .sport-wrapper {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .sport-content {
+    max-width: 560px;
+  }
+
+  .sport-content h1 {
+    font-size: 46px;
+    color: #4a148c;
+    margin-bottom: 20px;
+  }
+
+  .sport-content p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .btn-sport {
+    display: inline-block;
+    padding: 14px 30px;
+    background: #6a1b9a;
+    color: #fff;
+    border-radius: 30px;
+    text-decoration: none;
+    margin-top: 20px;
+  }
+
+  .btn-sport:hover {
+    background: #4a148c;
+  }
+
+  .sport-card {
+    width: 600px;
+    max-width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  }
+
+  .sport-card img {
+    width: 100%;
+    display: block;
+  }
+</style>
+
+<div class="sport-hero">
+  <div class="sport-overlay"></div>
+
+  <div class="sport-wrapper">
+    <!-- TESTO -->
+    <div class="sport-content">
+      <h1>Sport e performance</h1>
+
+      <p>
+        L’alimentazione è una componente fondamentale per migliorare la performance
+        sportiva, favorire il recupero e prevenire infortuni. Ogni disciplina
+        richiede strategie nutrizionali specifiche.
+      </p>
+
+      <p>
+        Il percorso nutrizionale viene costruito su misura in base al tipo di sport,
+        all’intensità degli allenamenti, agli obiettivi e alle esigenze individuali,
+        sia per atleti amatoriali che agonisti.
+      </p>
+
+      <p>
+        L’obiettivo è ottimizzare energia, resistenza e composizione corporea,
+        migliorando le prestazioni nel rispetto della salute e del benessere
+        generale.
+      </p>
+
+      <%= link_to "Prenota una consulenza gratuita",
+      prenota_consulenza_path,
+      class: "btn-sport" %>
+
+    </div>
+
+    <!-- IMMAGINE DESTRA -->
+    <div class="sport-card">
+      <%= image_tag "card_sport.jpg", alt: "Sport e performance" %>
+    </div>
+  </div>
+</div>

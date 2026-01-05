@@ -1,0 +1,137 @@
+<div class="container my-5">
+
+  <h2 class="fw-bold mb-4">🕒 Gestione slot consulenze</h2>
+
+  <!-- AGGIUNGI SLOT -->
+  <div class="card shadow-sm p-4 mb-5">
+    <h5 class="mb-3">➕ Aggiungi nuovo slot</h5>
+
+    <%= form_with model: @availability_slot,
+                  url: admin_availability_slots_path,
+                  local: true do |f| %>
+      <div class="row g-3 align-items-end">
+        <div class="col-md-6">
+          <%= f.label :scheduled_at, "Data e ora", class: "form-label" %>
+          <%= f.datetime_local_field :scheduled_at,
+                class: "form-control",
+                required: true %>
+        </div>
+
+        <div class="col-md-3">
+          <%= f.submit "Aggiungi",
+                class: "btn btn-success w-100" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- LISTA SLOT -->
+  <div class="card shadow-sm">
+    <table class="table align-middle mb-0">
+      <thead class="table-light">
+        <tr>
+          <th>📅 Data</th>
+          <th>⏰ Ora</th>
+          <th>👤 Cliente</th>
+          <th>📧 Email</th>
+          <th>Stato</th>
+          <th class="text-center">🎥 Zoom</th>
+          <th class="text-end">Azioni</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @availability_slots.each do |slot| %>
+          <% booking = @bookings_by_time[slot.scheduled_at] %>
+
+          <tr class="<%= 'table-secondary' if slot.past? %>">
+            <!-- DATA -->
+            <td><%= l(slot.scheduled_at.to_date) %></td>
+
+            <!-- ORA -->
+            <td><%= slot.scheduled_at.strftime("%H:%M") %></td>
+
+            <!-- CLIENTE -->
+            <td>
+              <% if booking %>
+                <strong><%= booking.user.name %></strong>
+              <% else %>
+                —
+              <% end %>
+            </td>
+
+            <!-- EMAIL -->
+            <td>
+              <% if booking %>
+                <%= booking.user.email %>
+              <% else %>
+                —
+              <% end %>
+            </td>
+
+            <!-- STATO -->
+            <td>
+              <% if slot.past? %>
+                <span class="badge bg-secondary">Passato</span>
+              <% elsif slot.active? %>
+                <span class="badge bg-success">Attivo</span>
+              <% else %>
+                <span class="badge bg-warning text-dark">Disattivo</span>
+              <% end %>
+            </td>
+
+            <!-- 🎥 ZOOM -->
+            <td class="text-center">
+              <% if booking&.zoom_link.present? && !slot.past? %>
+                <a href="<%= booking.zoom_link %>"
+                   target="_blank"
+                   class="btn btn-sm btn-success"
+                   title="Apri Zoom">
+                  🎥
+                </a>
+              <% else %>
+                —
+              <% end %>
+            </td>
+
+            <!-- AZIONI -->
+            <td class="text-end">
+
+              <% unless slot.past? %>
+                <!-- ATTIVA / DISATTIVA -->
+                <%= button_to toggle_admin_availability_slot_path(slot),
+                      method: :patch,
+                      class: "btn btn-sm btn-outline-primary me-2" do %>
+                  <%= slot.active? ? "Disattiva" : "Attiva" %>
+                <% end %>
+              <% end %>
+
+              <!-- 📧 PROMEMORIA -->
+              <% if booking && !slot.past? %>
+                <%= button_to send_reminder_admin_availability_slot_path(slot),
+                      method: :post,
+                      class: "btn btn-sm btn-outline-secondary me-2",
+                      data: { confirm: "Inviare email di promemoria al cliente?" },
+                      title: "Invia promemoria" do %>
+                  📧
+                <% end %>
+              <% end %>
+
+              <!-- 🗑️ ELIMINA -->
+              <%= button_to admin_availability_slot_path(slot),
+                    method: :delete,
+                    data: { confirm: "Eliminare definitivamente lo slot?" },
+                    class: "btn btn-sm btn-outline-danger",
+                    title: "Elimina slot" do %>
+                🗑️
+              <% end %>
+
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+

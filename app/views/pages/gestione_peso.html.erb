@@ -1,0 +1,187 @@
+<style>
+  .gestione-peso-hero {
+    position: relative;
+    min-height: 100vh;
+    background-image: url("<%= asset_path 'hero_salad2.jpg' %>");
+    background-size: cover;
+    background-position: center;
+    padding: 80px 60px;
+    display: flex;
+    align-items: center;
+  }
+
+  .gestione-peso-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(3px);
+    z-index: 1;
+  }
+
+  .gestione-peso-wrapper {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;          /* 🔑 CENTRA ORIZZONTALMENTE */
+  display: flex;
+  gap: 60px;
+  align-items: center;     /* 🔑 ALLINEA TESTO + IMMAGINE */
+}
+
+
+  .gestione-peso-content {
+    max-width: 520px;
+  }
+
+  .gestione-peso-content h1 {
+    font-size: 46px;
+    color: #4a148c;
+    margin-bottom: 20px;
+  }
+
+  .gestione-peso-content p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .btn-peso {
+    display: inline-block;
+    padding: 14px 30px;
+    background: #6a1b9a;
+    color: #fff;
+    border-radius: 30px;
+    text-decoration: none;
+    margin-top: 20px;
+  }
+
+  .btn-peso:hover {
+    background: #4a148c;
+  }
+
+  .gestione-peso-card {
+  width: 600px;              /* 🔑 stessa grandezza visiva */
+  max-width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+.gestione-peso-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+
+  /* HERO */
+  .gestione-peso-hero,
+  .gravidanza-hero,
+  .patologie-hero,
+  .sport-hero {
+    padding: 40px 20px;
+    min-height: auto;
+  }
+
+  /* CONTENITORE */
+  .gestione-peso-wrapper,
+  .gravidanza-wrapper,
+  .patologie-wrapper,
+  .sport-wrapper {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  /* TESTO */
+  .gestione-peso-content,
+  .gravidanza-content,
+  .patologie-content,
+  .sport-content {
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .gestione-peso-content h1,
+  .gravidanza-content h1,
+  .patologie-content h1,
+  .sport-content h1 {
+    font-size: 32px;
+  }
+
+  .gestione-peso-content p,
+  .gravidanza-content p,
+  .patologie-content p,
+  .sport-content p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* CARD IMMAGINE */
+  .gestione-peso-card,
+  .gravidanza-card,
+  .patologie-card,
+  .sport-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* BOTTONI */
+  .btn-peso,
+  .btn-gravidanza,
+  .btn-patologie,
+  .btn-sport {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+</style>
+
+<div class="gestione-peso-hero">
+  <div class="gestione-peso-overlay"></div>
+
+  <div class="gestione-peso-wrapper">
+    <!-- TESTO -->
+    <div class="gestione-peso-content">
+      <h1>Gestione del peso</h1>
+
+      <p>
+  La gestione del peso non è solo questione di calorie: è un equilibrio tra
+  alimentazione, metabolismo, emozioni e stile di vita.
+</p>
+
+<p>
+  Lavoro con un approccio scientifico e umano, evitando scorciatoie drastiche
+  o soluzioni rapide che non funzionano nel lungo periodo.
+</p>
+
+<p>
+  Che tu voglia dimagrire, aumentare di peso o mantenere i tuoi risultati,
+  il percorso sarà costruito su misura per te, con educazione alimentare,
+  supporto motivazionale e strategie pratiche.
+</p>
+
+<p>
+  L’obiettivo non è il numero sulla bilancia, ma il tuo benessere globale,
+  fisico e mentale.
+</p>
+
+
+      <%= link_to "Prenota una consulenza gratuita",
+      prenota_consulenza_path,
+      class: "btn-peso" %>
+
+
+
+    </div>
+
+    <!-- CARD DESTRA -->
+    <div class="gestione-peso-card">
+      <%= image_tag "card_peso.jpg", alt: "Gestione del peso" %>
+    </div>
+  </div>
+</div>

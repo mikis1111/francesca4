@@ -1,0 +1,33 @@
+<div class="container my-4">
+
+  <!-- 👉 Header Cliente -->
+ <div class="client-header mb-4">
+  <i class="material-icons client-icon"></i>
+
+  <div>
+    <h4 class="mb-0"><%= @client.full_name %></h4>
+    <span class="text-muted"><%= @client.email %></span>
+  </div>
+</div>
+
+
+
+  <!-- 👉 Storico Consulenze -->
+  <h5 class="section-title">
+  <i class="material-icons"></i>
+  Storico consulenze
+</h5>
+
+<%= render "consultations", consultations: @consultations %>
+
+
+  <!-- 👉 Note Cliniche -->
+  <h5 class="section-title">
+  <i class="material-icons"></i>
+  Note cliniche riservate
+</h5>
+
+<%= render "clinical_notes" %>
+
+
+</div>

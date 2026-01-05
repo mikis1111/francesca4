@@ -1,0 +1,179 @@
+<style>
+  .gravidanza-hero {
+    position: relative;
+    min-height: 100vh;
+    background-image: url("<%= asset_path 'hero_salad3.jpg' %>");
+    background-size: cover;
+    background-position: center;
+    padding: 80px 60px;
+    display: flex;
+    align-items: center;
+  }
+
+  .gravidanza-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(3px);
+    z-index: 1;
+  }
+
+  .gravidanza-wrapper {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .gravidanza-content {
+    max-width: 560px;
+  }
+
+  .gravidanza-content h1 {
+    font-size: 46px;
+    color: #4a148c;
+    margin-bottom: 20px;
+  }
+
+  .gravidanza-content p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .btn-gravidanza {
+    display: inline-block;
+    padding: 14px 30px;
+    background: #6a1b9a;
+    color: #fff;
+    border-radius: 30px;
+    text-decoration: none;
+    margin-top: 20px;
+  }
+
+  .btn-gravidanza:hover {
+    background: #4a148c;
+  }
+
+  .gravidanza-card {
+    width: 600px;
+    max-width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  }
+
+  .gravidanza-card img {
+    width: 100%;
+    display: block;
+  }
+
+
+
+  /* ===== MOBILE ===== */
+@media (max-width: 768px) {
+
+  /* HERO */
+  .gestione-peso-hero,
+  .gravidanza-hero,
+  .patologie-hero,
+  .sport-hero {
+    padding: 40px 20px;
+    min-height: auto;
+  }
+
+  /* CONTENITORE */
+  .gestione-peso-wrapper,
+  .gravidanza-wrapper,
+  .patologie-wrapper,
+  .sport-wrapper {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  /* TESTO */
+  .gestione-peso-content,
+  .gravidanza-content,
+  .patologie-content,
+  .sport-content {
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .gestione-peso-content h1,
+  .gravidanza-content h1,
+  .patologie-content h1,
+  .sport-content h1 {
+    font-size: 32px;
+  }
+
+  .gestione-peso-content p,
+  .gravidanza-content p,
+  .patologie-content p,
+  .sport-content p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* CARD IMMAGINE */
+  .gestione-peso-card,
+  .gravidanza-card,
+  .patologie-card,
+  .sport-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* BOTTONI */
+  .btn-peso,
+  .btn-gravidanza,
+  .btn-patologie,
+  .btn-sport {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+</style>
+
+<div class="gravidanza-hero">
+  <div class="gravidanza-overlay"></div>
+
+  <div class="gravidanza-wrapper">
+    <!-- TESTO -->
+    <div class="gravidanza-content">
+      <h1>Alimentazione in gravidanza</h1>
+
+      <p>
+        L’alimentazione in gravidanza è fondamentale per la salute della mamma
+        e per il corretto sviluppo del bambino. Non si tratta di “mangiare per due”,
+        ma di nutrirsi in modo consapevole ed equilibrato.
+      </p>
+
+      <p>
+        Ogni percorso viene costruito su misura, tenendo conto delle esigenze
+        nutrizionali specifiche di ogni trimestre, dello stile di vita e
+        delle eventuali condizioni cliniche.
+      </p>
+
+      <p>
+        L’obiettivo è accompagnarti con serenità in questo momento speciale,
+        fornendoti indicazioni pratiche, sicure e scientificamente corrette,
+        per il benessere tuo e del tuo bambino.
+      </p>
+
+      <%= link_to "Prenota una consulenza gratuita",
+      prenota_consulenza_path,
+      class: "btn-gravidanza" %>
+
+    </div>
+
+    <!-- IMMAGINE DESTRA -->
+    <div class="gravidanza-card">
+      <%= image_tag "card_gravidanza.jpg", alt: "Alimentazione in gravidanza" %>
+    </div>
+  </div>
+</div>

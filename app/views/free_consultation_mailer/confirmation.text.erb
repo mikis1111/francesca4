@@ -1,0 +1,23 @@
+Ciao <%= @booking.user.name %>,
+
+ti scrivo per confermarti il nostro appuntamento online.
+
+Data: <%= @booking.scheduled_at.strftime("%d/%m/%Y") %>
+Ora: <%= @booking.scheduled_at.strftime("%H:%M") %>
+
+<% if @booking.zoom_link.present? %>
+Collegamento Zoom:
+<%= @booking.zoom_link %>
+<% end %>
+
+La durata dell’incontro è di circa 30 minuti.
+
+Se hai domande o necessità particolari, puoi rispondere direttamente a questa email.
+
+A presto,
+Francesca Vitale
+Nutrizionista
+www.vitalefrancesca.com
+support@vitalefrancesca.com
+
+

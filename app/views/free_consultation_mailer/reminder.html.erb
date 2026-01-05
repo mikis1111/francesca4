@@ -1,0 +1,31 @@
+<p>Ciao <strong><%= @booking.user.name %></strong>,</p>
+
+<p>
+  Questo è un promemoria per la tua
+  <strong>consulenza gratuita online</strong>.
+</p>
+
+<p>
+  📅 <%= l @booking.scheduled_at.to_date %><br>
+  ⏰ <%= @booking.scheduled_at.strftime("%H:%M") %>
+</p>
+
+<% if @booking.zoom_link.present? %>
+  <p>
+    🎥 <a href="<%= @booking.zoom_link %>">Clicca qui per collegarti su Zoom</a>
+  </p>
+<% end %>
+
+<p>
+  Se hai bisogno, puoi rispondere direttamente a questa email.
+</p>
+
+<hr>
+
+<p style="font-size:12px;color:#666;">
+  Francesca Vitale – Nutrizionista<br>
+  <a href="https://www.vitalefrancesca.com">www.vitalefrancesca.com</a><br>
+  support@vitalefrancesca.com
+</p>
+
+

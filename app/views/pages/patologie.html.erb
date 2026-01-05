@@ -1,0 +1,178 @@
+<style>
+  .patologie-hero {
+    position: relative;
+    min-height: 100vh;
+    background-image: url("<%= asset_path 'hero_salad4.jpg' %>");
+    background-size: cover;
+    background-position: center;
+    padding: 80px 60px;
+    display: flex;
+    align-items: center;
+  }
+
+  .patologie-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(3px);
+    z-index: 1;
+  }
+
+  .patologie-wrapper {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .patologie-content {
+    max-width: 560px;
+  }
+
+  .patologie-content h1 {
+    font-size: 46px;
+    color: #4a148c;
+    margin-bottom: 20px;
+  }
+
+  .patologie-content p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .btn-patologie {
+    display: inline-block;
+    padding: 14px 30px;
+    background: #6a1b9a;
+    color: #fff;
+    border-radius: 30px;
+    text-decoration: none;
+    margin-top: 20px;
+  }
+
+  .btn-patologie:hover {
+    background: #4a148c;
+  }
+
+  .patologie-card {
+    width: 600px;
+    max-width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  }
+
+  .patologie-card img {
+    width: 100%;
+    display: block;
+  }
+
+
+  /* ===== MOBILE ===== */
+@media (max-width: 768px) {
+
+  /* HERO */
+  .gestione-peso-hero,
+  .gravidanza-hero,
+  .patologie-hero,
+  .sport-hero {
+    padding: 40px 20px;
+    min-height: auto;
+  }
+
+  /* CONTENITORE */
+  .gestione-peso-wrapper,
+  .gravidanza-wrapper,
+  .patologie-wrapper,
+  .sport-wrapper {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  /* TESTO */
+  .gestione-peso-content,
+  .gravidanza-content,
+  .patologie-content,
+  .sport-content {
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .gestione-peso-content h1,
+  .gravidanza-content h1,
+  .patologie-content h1,
+  .sport-content h1 {
+    font-size: 32px;
+  }
+
+  .gestione-peso-content p,
+  .gravidanza-content p,
+  .patologie-content p,
+  .sport-content p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* CARD IMMAGINE */
+  .gestione-peso-card,
+  .gravidanza-card,
+  .patologie-card,
+  .sport-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* BOTTONI */
+  .btn-peso,
+  .btn-gravidanza,
+  .btn-patologie,
+  .btn-sport {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+</style>
+
+<div class="patologie-hero">
+  <div class="patologie-overlay"></div>
+
+  <div class="patologie-wrapper">
+    <!-- TESTO -->
+    <div class="patologie-content">
+      <h1>Patologie certificate</h1>
+
+      <p>
+        L’alimentazione gioca un ruolo fondamentale nella gestione di numerose
+        patologie certificate. Un piano nutrizionale corretto può contribuire
+        a migliorare la qualità della vita e supportare le terapie mediche.
+      </p>
+
+      <p>
+        Elaboro piani alimentari personalizzati per diverse condizioni cliniche,
+        sempre in collaborazione con il medico curante e nel rispetto delle
+        linee guida scientifiche.
+      </p>
+
+      <p>
+        L’obiettivo è aiutarti a gestire la patologia in modo consapevole,
+        sicuro e sostenibile, adattando l’alimentazione alle tue reali esigenze
+        e al tuo stile di vita.
+      </p>
+
+      <%= link_to "Prenota una consulenza gratuita",
+      prenota_consulenza_path,
+      class: "btn-patologie" %>
+
+    </div>
+
+    <!-- IMMAGINE DESTRA -->
+    <div class="patologie-card">
+      <%= image_tag "card_patologie.jpg", alt: "Patologie certificate" %>
+    </div>
+  </div>
+</div>

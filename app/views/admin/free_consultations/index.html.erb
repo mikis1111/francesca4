@@ -1,0 +1,129 @@
+<div class="alert alert-warning mb-4">
+  🔐 <strong>Modalità Admin</strong> — Sei autenticato come amministratore
+</div>
+
+<h1 class="mb-4">📅 Dashboard Consulenze Gratuite</h1>
+
+<!-- Ricerca -->
+<div class="row mb-3">
+  <div class="col-md-6">
+    <%= form_with url: admin_free_consultations_path,
+                  method: :get,
+                  local: true do %>
+      <div class="input-group">
+        <%= text_field_tag :query,
+                           params[:query],
+                           class: "form-control",
+                           placeholder: "Cerca per nome o email" %>
+        <button class="btn btn-outline-secondary" type="submit">
+          🔍 Cerca
+        </button>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<table class="table table-hover align-middle">
+  <thead class="table-light">
+    <tr>
+      <th>Cliente</th>
+      <th>Email</th>
+      <th>Data</th>
+      <th>Ora</th>
+      <th>Stato</th>
+      <th class="text-center">🎥 Zoom</th>
+      <th>Azioni</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bookings.each do |b| %>
+      <tr>
+
+        <!-- CLIENTE (LINK ALLO STORICO) -->
+        <td>
+          <% if b.user.present? %>
+            <%= link_to b.user.name,
+                  admin_client_path(b.user),
+                  class: "fw-semibold text-decoration-none" %>
+          <% else %>
+            —
+          <% end %>
+        </td>
+
+        <!-- EMAIL -->
+        <td>
+          <%= b.user&.email || "—" %>
+        </td>
+
+        <!-- DATA -->
+        <td>
+          <span class="badge bg-primary">
+            <%= l(b.scheduled_at.to_date) %>
+          </span>
+        </td>
+
+        <!-- ORA -->
+        <td>
+          <span class="badge bg-secondary">
+            <%= b.scheduled_at.strftime("%H:%M") %>
+          </span>
+        </td>
+
+        <!-- STATO -->
+        <td>
+          <% case b.time_status %>
+          <% when "oggi" %>
+            <span class="badge bg-warning text-dark">Oggi</span>
+          <% when "futura" %>
+            <span class="badge bg-success">Futura</span>
+          <% else %>
+            <span class="badge bg-secondary">Passata</span>
+          <% end %>
+        </td>
+
+        <!-- 🎥 ZOOM -->
+        <td class="text-center">
+          <% if b.zoom_link.present? %>
+            <a href="<%= b.zoom_link %>"
+               target="_blank"
+               class="btn btn-sm btn-success"
+               title="Apri riunione Zoom">
+              🎥
+            </a>
+          <% else %>
+            —
+          <% end %>
+        </td>
+
+        <!-- AZIONI -->
+        <td class="text-nowrap">
+          <!-- Invia promemoria -->
+          <%= button_to "✉️",
+                send_reminder_admin_free_consultation_path(b),
+                method: :post,
+                class: "btn btn-sm btn-outline-primary",
+                title: "Invia promemoria",
+                data: { confirm: "Inviare email di promemoria al cliente?" } %>
+
+          <!-- Elimina consulenza -->
+          <%= button_to "❌",
+                admin_free_consultation_path(b),
+                method: :delete,
+                data: { confirm: "Sei sicuro di voler eliminare la consulenza?" },
+                class: "btn btn-sm btn-outline-danger",
+                title: "Elimina consulenza" %>
+        </td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if @bookings.empty? %>
+  <p class="text-muted mt-3">
+    Nessuna consulenza gratuita trovata.
+  </p>
+<% end %>
+
+

@@ -1,0 +1,60 @@
+<!-- AGGIUNTA NOTA -->
+<div class="clinical-add-note">
+  <h6>Aggiungi nota clinica</h6>
+
+  <%= form_with url: admin_client_client_notes_path(@client),
+                scope: :client_note,
+                method: :post,
+                local: true do |f| %>
+
+    <%= f.text_area :content,
+          rows: 3,
+          class: "clinical-textarea",
+          placeholder: "Scrivi una nota clinica riservata..." %>
+
+    <div class="clinical-actions">
+      <%= f.submit "Salva nota", class: "btn btn-primary btn-small" %>
+    </div>
+
+  <% end %>
+</div>
+
+<!-- TIMELINE NOTE -->
+<div class="clinical-timeline">
+
+  <% @notes.each do |note| %>
+    <div class="clinical-entry">
+
+      <div class="clinical-dot"></div>
+
+      <div class="clinical-content">
+        <div class="clinical-meta">
+          <span>
+            <%= note.created_at.strftime("%d/%m/%Y %H:%M") %>
+            – <strong><%= note.author %></strong>
+          </span>
+
+          <!-- 🔴 FORM DELETE VERO (QUESTO È IL FIX) -->
+          <%= form_with url: admin_client_client_note_path(@client, note),
+                        method: :delete,
+                        local: true,
+                        class: "delete-note-form" do %>
+
+            <%= submit_tag "Elimina",
+                  class: "clinical-delete",
+                  data: { confirm: "Eliminare questa nota?" } %>
+
+          <% end %>
+        </div>
+
+        <div class="clinical-text">
+          <%= simple_format(note.content) %>
+        </div>
+      </div>
+
+    </div>
+  <% end %>
+
+</div>
+
+
