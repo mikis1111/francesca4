@@ -1,5 +1,7 @@
 <!-- HERO CON SFONDO -->
-<div class="piani-hero">
+<div class="piani-hero" style="
+  background-image: url('<%= asset_path("hero_salad1.jpg") %>');
+">
   <div class="container py-5">
 
     <div class="row align-items-center">
@@ -27,16 +29,15 @@
         </p>
 
         <%= link_to "Prenota una consulenza gratuita",
-      prenota_consulenza_path,
-      class: "btn-cta mt-3" %>
-
-
-
+              prenota_consulenza_path,
+              class: "btn-cta mt-3" %>
       </div>
 
       <!-- IMMAGINE A DESTRA -->
       <div class="col-md-6 text-center">
-        <img src="/assets/card_piani.jpg" class="img-fluid piani-image" alt="Piani alimentari">
+        <%= image_tag "card_piani.jpg",
+              class: "img-fluid piani-image",
+              alt: "Piani alimentari" %>
       </div>
 
     </div>
@@ -45,15 +46,12 @@
 </div>
 
 
-
-
 <style>
 /* SFONDO EFFETTO PREMIUM */
 .piani-hero {
-  background-image: url('/assets/hero_salad1.jpg'); /* tua immagine di sfondo */
   background-size: cover;
   background-position: center;
-  background-attachment: fixed; /* effetto parallax leggero */
+  background-attachment: fixed;
   padding: 80px 0;
   position: relative;
 }
@@ -106,29 +104,14 @@
   box-shadow: 0 12px 30px rgba(0,0,0,0.25);
 }
 
-/* BOTTONE PREMIUM */
-.btn-premium {
-  background: linear-gradient(135deg, #4B0082, #7A1FA2);
-  color: white !important;
-  padding: 12px 26px;
-  border-radius: 30px;
-  font-weight: 600;
-  box-shadow: 0 5px 18px rgba(75,0,130,0.35);
-  transition: 0.25s ease-in-out;
-}
-
-.btn-premium:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 28px rgba(75,0,130,0.45);
-}
-
+/* BOTTONE CTA */
 .btn-cta {
   background-color: #4B0082;
   color: #ffffff;
   padding: 14px 32px;
-  border-radius: 999px;        /* pill perfetta */
+  border-radius: 999px;
   font-weight: 600;
-  text-decoration: none;       /* 🔥 RIMUOVE LA SOTTOLINEATURA */
+  text-decoration: none;
   display: inline-block;
   transition: background-color 0.25s ease, transform 0.15s ease;
 }
@@ -137,70 +120,31 @@
   background-color: #3a0068;
   color: #ffffff;
   transform: translateY(-1px);
-  text-decoration: none;       /* sicurezza */
+  text-decoration: none;
 }
-
-
 
 /* ===== MOBILE ===== */
 @media (max-width: 768px) {
 
-  /* HERO */
-  .gestione-peso-hero,
-  .gravidanza-hero,
-  .patologie-hero,
-  .sport-hero {
+  .piani-hero {
     padding: 40px 20px;
-    min-height: auto;
+    background-attachment: scroll;
   }
 
-  /* CONTENITORE */
-  .gestione-peso-wrapper,
-  .gravidanza-wrapper,
-  .patologie-wrapper,
-  .sport-wrapper {
-    flex-direction: column;
-    gap: 30px;
-  }
-
-  /* TESTO */
-  .gestione-peso-content,
-  .gravidanza-content,
-  .patologie-content,
-  .sport-content {
-    max-width: 100%;
-    text-align: left;
-  }
-
-  .gestione-peso-content h1,
-  .gravidanza-content h1,
-  .patologie-content h1,
-  .sport-content h1 {
+  .piani-title {
     font-size: 32px;
   }
 
-  .gestione-peso-content p,
-  .gravidanza-content p,
-  .patologie-content p,
-  .sport-content p {
+  .piani-text {
     font-size: 16px;
     line-height: 1.6;
   }
 
-  /* CARD IMMAGINE */
-  .gestione-peso-card,
-  .gravidanza-card,
-  .patologie-card,
-  .sport-card {
-    width: 100%;
-    max-width: 100%;
+  .piani-image {
+    margin-top: 30px;
   }
 
-  /* BOTTONI */
-  .btn-peso,
-  .btn-gravidanza,
-  .btn-patologie,
-  .btn-sport {
+  .btn-cta {
     width: 100%;
     text-align: center;
   }
