@@ -20,23 +20,13 @@ class ApplicationController < ActionController::Base
 
   def require_login
     return if logged_in?
-  
-    # evita loop infinito sul login
-    if controller_name == "sessions" && action_name == "new"
-      return
-    end
-  
     redirect_to login_path, alert: "Devi effettuare l'accesso per continuare."
   end
-  
 
   def require_admin
-    unless current_user&.admin?
-      redirect_to root_path, alert: "Accesso non autorizzato"
-
-    end
+    return if current_user&.admin?
+    redirect_to root_path, alert: "Accesso non autorizzato"
   end
-  
 end
 
 
