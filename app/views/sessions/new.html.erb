@@ -4,11 +4,7 @@
 
     <h2 class="register-title text-center mb-4">Login</h2>
 
-    <% if flash[:alert] %>
-      <div class="alert alert-danger">
-        <%= flash[:alert] %>
-      </div>
-    <% end %>
+    
 
     <%= form_with url: login_path, local: true do |f| %>
 
