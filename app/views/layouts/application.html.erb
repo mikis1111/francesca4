@@ -37,21 +37,7 @@
 <%= render "shared/flash" %>
 
     <!-- ⭐ FLASH MESSAGE PREMIUM -->
-    <div id="flash-premium-wrapper">
-      <% flash.each do |type, message| %>
-        <% css =
-          case type.to_sym
-          when :notice then "flash-premium-success"
-          when :alert then "flash-premium-danger"
-          else "flash-premium-info"
-          end
-        %>
-
-        <div class="flash-premium <%= css %>">
-          <%= message %>
-        </div>
-      <% end %>
-    </div>
+    
 
     <!-- ⭐ AUTO-HIDE FLASH -->
     <script>
