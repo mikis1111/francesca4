@@ -1,6 +1,6 @@
 <!-- HERO SECTION -->
 <div class="hero" style="
-  background-image: url('/assets/hero_salad.jpg');
+  background-image: url('<%= asset_path("hero_salad.jpg") %>');
   background-size: cover;
   background-position: center;
   height: 500px;
@@ -15,14 +15,14 @@
       </p>
 
       <div class="d-flex justify-content-center gap-3 mt-3">
-        <%= link_to "SCOPRI DI PIÙ", chi_sono_path,
-      class: "btn btn-purple px-4 py-2 text-white",
-      style: "background-color:#4B0082;" %>
+        <%= link_to "SCOPRI DI PIÙ",
+              chi_sono_path,
+              class: "btn btn-purple px-4 py-2 text-white",
+              style: "background-color:#4B0082;" %>
 
         <%= link_to "PRENOTA UNA CONSULENZA GRATUITA",
-      prenota_consulenza_path,
-      class: "btn btn-success px-4 py-2" %>
-
+              prenota_consulenza_path,
+              class: "btn btn-success px-4 py-2" %>
       </div>
     </div>
   </div>
@@ -46,9 +46,10 @@
     <% cards.each do |card| %>
       <div class="col-6 col-md-4 col-lg-2 d-flex card-spacing">
         <div class="card shadow card-god flex-fill text-center">
-          <img src="/assets/<%= card[:img] %>"
-               class="card-img-top"
-               style="height:120px; object-fit:cover;">
+
+          <%= image_tag card[:img],
+                class: "card-img-top",
+                style: "height:120px; object-fit:cover;" %>
 
           <div class="card-body d-flex flex-column">
             <h6 class="fw-bold"><%= card[:title] %></h6>
