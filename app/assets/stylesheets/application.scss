@@ -124,14 +124,30 @@
   box-shadow: 0 0 8px rgba(75,0,130,0.25);
 }
 
-/* BUTTON */
+/* BUTTON AUTH (FIX VISIBILITÀ) */
 .auth-btn {
-  background: #4B0082;
-  color: white;
+  background-color: #4B0082 !important;
+  color: #ffffff !important;
+
+  border: none;
   border-radius: 30px;
+
   font-weight: 600;
+  font-size: 1rem;
+
+  padding: 12px 16px;
   width: 100%;
+
+  box-shadow: 0 5px 18px rgba(75,0,130,0.35);
+  transition: all 0.25s ease;
 }
+
+.auth-btn:hover {
+  background-color: #3a0066 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(75,0,130,0.45);
+}
+
 
 /* LINK */
 .auth-link {
