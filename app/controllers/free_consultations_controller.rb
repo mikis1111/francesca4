@@ -39,8 +39,11 @@ class FreeConsultationsController < ApplicationController
   end
 
   def grouped_availability_slots
+    booked_times = FreeConsultationBooking.pluck(:scheduled_at)
+  
     AvailabilitySlot
       .where(active: true)
+      .where.not(scheduled_at: booked_times)
       .order(:scheduled_at)
       .group_by { |slot| slot.scheduled_at.to_date }
       .map do |date, slots|
@@ -55,14 +58,20 @@ class FreeConsultationsController < ApplicationController
         ]
       end
   end
+  
 
 
   def prevent_multiple_free_bookings
     return unless current_user
   
-    if FreeConsultationBooking.exists?(user: current_user)
-      redirect_to root_path,
-                  alert: "Hai già prenotato la tua consulenza gratuita."
+    if FreeConsultationBooking.exists?(scheduled_at: @free_consultation_booking.scheduled_at)
+      redirect_to prenota_consulenza_path,
+                  alert: "Questo slot non è più disponibile."
+      return
     end
+    
+    if @free_consultation_booking.save
+    
+    
   end
 end
