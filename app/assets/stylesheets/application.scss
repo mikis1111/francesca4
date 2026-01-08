@@ -67,3 +67,78 @@
     }
   }
   
+
+  /* =========================
+   AUTH PAGES (LOGIN + SIGNUP)
+   ========================= */
+
+.auth-hero {
+  min-height: calc(100vh - 96px); // navbar
+  background:
+    linear-gradient(
+      rgba(75,0,130,0.75),
+      rgba(75,0,130,0.75)
+    ),
+    image-url("hero_salad.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 40px 20px;
+}
+
+/* CARD */
+.auth-card {
+  background: rgba(255,255,255,0.88);
+  backdrop-filter: blur(10px);
+  padding: 40px 45px;
+  border-radius: 22px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  max-width: 520px;
+  width: 100%;
+}
+
+/* TITLE */
+.auth-title {
+  font-weight: 700;
+  color: #4B0082;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* INPUT */
+.auth-input {
+  border: 2px solid #e8e2f3;
+  padding: 10px 14px;
+  border-radius: 10px;
+}
+
+.auth-input:focus {
+  border-color: #4B0082;
+  box-shadow: 0 0 8px rgba(75,0,130,0.25);
+}
+
+/* BUTTON */
+.auth-btn {
+  background: #4B0082;
+  color: white;
+  border-radius: 30px;
+  font-weight: 600;
+  width: 100%;
+}
+
+/* LINK */
+.auth-link {
+  color: #4B0082;
+  font-weight: 600;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}
