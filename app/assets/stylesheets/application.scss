@@ -2,7 +2,7 @@
  *= require custom
  *= require_tree .
  *= require_self
- *= require login
+ *= require auth
  */
 /* OVERLAY */
 .flash-overlay {

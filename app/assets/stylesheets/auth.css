@@ -1,0 +1,99 @@
+/* =========================
+   AUTH PAGES (LOGIN + SIGNUP)
+   ========================= */
+
+   .auth-hero {
+    min-height: 100vh;
+    background:
+      linear-gradient(
+        rgba(75,0,130,0.75),
+        rgba(75,0,130,0.75)
+      ),
+      image-url("hero_salad.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+  }
+  
+  /* CARD */
+  .auth-card {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(10px);
+    padding: 40px 45px;
+    border-radius: 22px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    max-width: 520px;
+    width: 100%;
+  }
+  
+  /* TITLE */
+  .auth-title {
+    font-weight: 700;
+    color: #4B0082;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* INPUT */
+  .auth-input {
+    border: 2px solid #e8e2f3;
+    padding: 10px 14px;
+    border-radius: 10px;
+    transition: 0.2s;
+  }
+  
+  .auth-input:focus {
+    border-color: #4B0082;
+    box-shadow: 0 0 8px rgba(75,0,130,0.25);
+  }
+  
+  /* BUTTON */
+  .auth-btn {
+    background: #4B0082;
+    color: white;
+    border-radius: 30px;
+    font-weight: 600;
+    width: 100%;
+    box-shadow: 0 5px 18px rgba(75,0,130,0.3);
+    transition: 0.25s ease;
+  }
+  
+  .auth-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(75,0,130,0.4);
+  }
+  
+  /* LINK */
+  .auth-link {
+    color: #4B0082;
+    font-weight: 600;
+  }
+  
+  .auth-link:hover {
+    text-decoration: underline;
+  }
+  
+  /* ANIMATION */
+  .animate-auth {
+    animation: fadeInUp 0.7s ease both;
+  }
+  
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* MOBILE */
+  @media (max-width: 375px) {
+    .auth-card {
+      padding: 30px 20px;
+    }
+    .auth-title {
+      font-size: 1.7rem;
+    }
+  }
+  

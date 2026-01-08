@@ -1,179 +1,47 @@
-<div class="register-hero">
+<div class="auth-hero">
 
-  <div class="register-card animate-register">
+  <div class="auth-card animate-auth">
 
-    <h2 class="register-title text-center mb-4">Registrazione</h2>
+    <h2 class="auth-title">Registrazione</h2>
 
-    
+    <%= form_with model: @user, url: signup_path do |f| %>
 
-    <%= form_with model: @user, url: signup_path, class: "register-form" do |f| %>
-
-      <!-- Nome -->
       <div class="mb-3">
         <%= f.label :name, "Nome completo", class: "form-label fw-semibold" %>
         <%= f.text_field :name,
-              class: "form-control register-input",
-              placeholder: "Inserisci il tuo nome",
+              class: "form-control auth-input",
               required: true %>
       </div>
 
-      <!-- Email -->
       <div class="mb-3">
         <%= f.label :email, "Email", class: "form-label fw-semibold" %>
         <%= f.email_field :email,
-              class: "form-control register-input",
-              placeholder: "esempio@email.com",
+              class: "form-control auth-input",
               required: true %>
       </div>
 
-      <!-- Password -->
       <div class="mb-3">
         <%= f.label :password, "Password", class: "form-label fw-semibold" %>
         <%= f.password_field :password,
-              class: "form-control register-input",
-              placeholder: "Minimo 6 caratteri",
+              class: "form-control auth-input",
               required: true %>
       </div>
 
-      <!-- Password Confirmation -->
       <div class="mb-4">
         <%= f.label :password_confirmation, "Conferma Password", class: "form-label fw-semibold" %>
         <%= f.password_field :password_confirmation,
-              class: "form-control register-input",
-              placeholder: "Riscrivi la password",
+              class: "form-control auth-input",
               required: true %>
       </div>
 
-      <div class="text-center">
-        <%= f.submit "Registrati", class: "btn register-btn px-4 py-2" %>
-      </div>
+      <%= f.submit "Registrati", class: "btn auth-btn" %>
 
     <% end %>
 
     <div class="text-center mt-4 small">
       Hai già un account?
-      <%= link_to "Accedi qui", login_path, class: "register-link" %>
+      <%= link_to "Accedi qui", login_path, class: "auth-link" %>
     </div>
 
   </div>
 </div>
-
-<!-- OVERLAY SUCCESSO REGISTRAZIONE -->
-<% if flash[:signup_success] %>
-  <div class="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
-       style="background: rgba(0,0,0,0.55); z-index: 9999;">
-    <div class="card shadow-lg p-4 text-center animate-register" style="max-width: 420px;">
-      <h4 class="mb-3 text-success">✅ Registrazione completata</h4>
-
-      <p class="mb-2">
-        Il tuo account è stato creato correttamente.
-      </p>
-
-      <p class="text-muted mb-3">
-        📧 Per sicurezza, controlla anche la
-        <strong>posta indesiderata</strong>
-        se non vedi subito l’email di conferma.
-      </p>
-
-      <%= link_to "Vai al Login",
-            login_path,
-            class: "btn register-btn px-4 py-2 w-100" %>
-    </div>
-  </div>
-<% end %>
-
-<style>
-
-  /* 🔵 SFONDO ELEGANTE */
-  .register-hero {
-    min-height: 100vh;
-    background: linear-gradient(
-      rgba(75,0,130,0.75),
-      rgba(75,0,130,0.75)
-    ), url('/assets/hero_salad.jpg');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 20px;
-  }
-
-  /* 🟣 CARD GLASSMORPHISM PREMIUM */
-  .register-card {
-    background: rgba(255,255,255,0.85);
-    backdrop-filter: blur(10px);
-    padding: 40px 45px;
-    border-radius: 22px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-    max-width: 520px;
-    width: 100%;
-  }
-
-  /* TITOLO */
-  .register-title {
-    font-weight: 700;
-    color: #4B0082;
-    font-size: 2rem;
-  }
-
-  /* INPUT ELEGANTI */
-  .register-input {
-    border: 2px solid #e8e2f3;
-    padding: 10px 14px;
-    border-radius: 10px;
-    transition: 0.2s;
-  }
-
-  .register-input:focus {
-    border-color: #4B0082;
-    box-shadow: 0 0 8px rgba(75,0,130,0.25);
-  }
-
-  /* BOTTONE */
-  .register-btn {
-    background: #4B0082;
-    color: white;
-    border-radius: 30px;
-    font-weight: 600;
-    width: 100%;
-    box-shadow: 0 5px 18px rgba(75,0,130,0.3);
-    transition: 0.25s ease;
-  }
-
-  .register-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(75,0,130,0.4);
-  }
-
-  /* LINK */
-  .register-link {
-    color: #4B0082;
-    font-weight: 600;
-  }
-
-  .register-link:hover {
-    text-decoration: underline;
-  }
-
-  /* ANIMAZIONE */
-  .animate-register {
-    animation: fadeInUp 0.7s ease both;
-  }
-
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  /* MOBILE FIX */
-  @media (max-width: 375px) {
-    .register-card {
-      padding: 30px 20px;
-    }
-    .register-title {
-      font-size: 1.7rem;
-    }
-  }
-
-</style>

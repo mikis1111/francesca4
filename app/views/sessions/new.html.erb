@@ -1,8 +1,8 @@
-<div class="login-hero">
+<div class="auth-hero">
 
-  <div class="login-card animate-register">
+  <div class="auth-card animate-auth">
 
-    <h2 class="login-title text-center mb-4">Login</h2>
+    <h2 class="auth-title">Login</h2>
 
     <%= form_with url: login_path, local: true do %>
 
@@ -10,7 +10,7 @@
         <%= label_tag :email, "Email", class: "form-label fw-semibold" %>
         <%= email_field_tag :email,
               params[:email],
-              class: "form-control login-input",
+              class: "form-control auth-input",
               required: true %>
       </div>
 
@@ -18,20 +18,19 @@
         <%= label_tag :password, "Password", class: "form-label fw-semibold" %>
         <%= password_field_tag :password,
               nil,
-              class: "form-control login-input",
+              class: "form-control auth-input",
               required: true %>
       </div>
 
-      <%= submit_tag "Accedi",
-            class: "btn login-btn px-4 py-2" %>
+      <%= submit_tag "Accedi", class: "btn auth-btn" %>
 
     <% end %>
 
     <div class="text-center mt-4 small">
       Non hai un account?
-      <%= link_to "Registrati qui", signup_path %>
+      <%= link_to "Registrati qui", signup_path, class: "auth-link" %>
     </div>
 
   </div>
-
 </div>
+
