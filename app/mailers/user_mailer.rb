@@ -1,11 +1,10 @@
 class UserMailer < ApplicationMailer
-    def welcome(user)
-      @user = user
-  
-      mail(
-        to: @user.email,
-        subject: "Benvenuto su Francesca Vitale – Conferma registrazione"
-      )
-    end
+  def welcome_email(user)
+    @user = user
+
+    mail(
+      to: @user.email,
+      subject: "Benvenuto nel sito di Francesca Vitale"
+    )
   end
-  
+end
