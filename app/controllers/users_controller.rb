@@ -9,15 +9,14 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
     
       if @user.save
-        UserMailer.welcome(@user).deliver_later
-        flash[:signup_success] = true
-        redirect_to signup_path
+        session[:user_id] = @user.id
+        redirect_to root_path, notice: "Benvenuto #{@user.name}!"
       else
-        flash.now[:alert] = @user.errors.full_messages.to_sentence
-        render :new, status: :unprocessable_content
+        render :new, status: :unprocessable_entity
       end
-      
     end
+    
+    
     
     
   
