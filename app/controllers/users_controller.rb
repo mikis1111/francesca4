@@ -9,8 +9,14 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
     
       if @user.save
+        # 🔐 login automatico
         session[:user_id] = @user.id
-        redirect_to root_path, notice: "Benvenuto #{@user.name}!"
+    
+        # 📧 email di benvenuto
+        UserMailer.welcome_email(@user).deliver_later
+    
+        redirect_to root_path,
+                    notice: "Benvenuto #{@user.name}! Controlla la tua email 😊"
       else
         render :new, status: :unprocessable_entity
       end
