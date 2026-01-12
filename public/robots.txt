@@ -1,5 +1,4 @@
 User-agent: *
-Disallow:
+Allow: /
 
-Sitemap: https://www.vitalefrancesca.com/sitemap.xml
-
+Sitemap: https://www.vitalefrancesca.com/sitemap.xml.gz
